@@ -26,3 +26,20 @@ class(swiss) <- "data.frame"
 data(Orange)
 class(Orange) <- "data.frame"
 
+##################################
+#Analysis of swiss dataset
+##################################
+
+#Summary statistics: min-max, median, mean, 1st and 3rd quartile
+summary(swiss)
+
+#Standard deviation of 6 variables
+for (i in 1:length(names(swiss))) 
+  #using the number of variable names as upper bond for loop
+{ 
+  swiss[, i] %>%
+    sd() %>%
+    round(digits = 2) %>%
+    paste(names(swiss)[i], ., '\n') %>%  # . directs piping
+    cat()
+}
