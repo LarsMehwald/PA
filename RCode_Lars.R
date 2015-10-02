@@ -16,6 +16,10 @@
 
 #Loading needed packages
 library('ggplot2')
+library('magrittr')
+
+# Loading of own function
+source('FunctionStandardDeviation.R')
 
 #Loading R datasets: swiss and orange
 data()
@@ -34,12 +38,4 @@ class(Orange) <- "data.frame"
 summary(swiss)
 
 #Standard deviation of 6 variables
-for (i in 1:length(names(swiss))) 
-  #using the number of variable names as upper bond for loop
-{ 
-  swiss[, i] %>%
-    sd() %>%
-    round(digits = 2) %>%
-    paste(names(swiss)[i], ., '\n') %>%  # . directs piping
-    cat()
-}
+StandardDeviation(swiss)
